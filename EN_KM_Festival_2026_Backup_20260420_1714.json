@@ -1,0 +1,350 @@
+{
+  "_meta": {
+    "app": "EN KM Festival 2026 — Financial Management",
+    "version": "1.0",
+    "exportedAt": "2026-04-20T10:14:56.124Z",
+    "exportedAtTH": "วันจันทร์ที่ 20 เมษายน 2569 เวลา 17:14",
+    "counts": {
+      "expenses": 18,
+      "budgetItems": 6,
+      "tasks": 11
+    },
+    "totalBudget": 300000
+  },
+  "totalBudget": 300000,
+  "catBudgets": {
+    "venue": 50000,
+    "food": 80000,
+    "print": 25000,
+    "award": 30000,
+    "equip": 20000,
+    "misc": 15000
+  },
+  "budgetItems": [
+    {
+      "id": 1774864479588,
+      "name": "สถานที่",
+      "cat": "venue",
+      "amount": 30000,
+      "note": ""
+    },
+    {
+      "id": 1774864479589,
+      "name": "อาหาร/เครื่องดื่ม",
+      "cat": "food",
+      "amount": 70000,
+      "note": ""
+    },
+    {
+      "id": 1774864479590,
+      "name": "สื่อสิ่งพิมพ์",
+      "cat": "print",
+      "amount": 25000,
+      "note": ""
+    },
+    {
+      "id": 1774864479591,
+      "name": "รางวัล/ของที่ระลึก",
+      "cat": "award",
+      "amount": 140000,
+      "note": ""
+    },
+    {
+      "id": 1774864479592,
+      "name": "อุปกรณ์/เทคโนโลยี",
+      "cat": "equip",
+      "amount": 10000,
+      "note": ""
+    },
+    {
+      "id": 1774864479593,
+      "name": "อื่นๆ",
+      "cat": "misc",
+      "amount": 25000,
+      "note": ""
+    }
+  ],
+  "expenses": [
+    {
+      "name": "ค่า Pass sport",
+      "amount": 3500,
+      "cat": "print",
+      "owner": "ดอม",
+      "date": "2026-03-30",
+      "status": "pending",
+      "note": "",
+      "id": 1774863805602
+    },
+    {
+      "name": "เวทีกลาง",
+      "amount": 10000,
+      "cat": "venue",
+      "owner": "",
+      "date": "2026-03-30",
+      "status": "pending",
+      "note": "",
+      "id": 1774864015479
+    },
+    {
+      "name": "Phishing Game",
+      "amount": 22000,
+      "cat": "award",
+      "owner": "ENMM-MW-Sirichai",
+      "date": "2026-03-30",
+      "status": "pending",
+      "note": "รางวัลชมเชย 2 รางวัล เสนอเป็นเงิน 2,000 บาท\nรางวัลรองชนะเลิศอันดับ 2 เสนอเป็นเงิน 3,000 บาท\nรางวัลรองชนะเลิศอันดับ 1 เสนอเป็นเงิน 5,000 บาท\nรางวัลชนะเลิศอันดับ 1 เสนอเป็นเงิน 10,000 บาท",
+      "id": 1774864624590
+    },
+    {
+      "name": "Lucky draw",
+      "amount": 12300,
+      "cat": "award",
+      "owner": "ENMM-MW-Sirichai",
+      "date": "2026-03-30",
+      "status": "pending",
+      "note": "3.1 พัดลม รวม 800 บาท\n3.2 หม้อหุงข้าว รวม 1,000 บาท\n3.3 หูฟัง รวม 1,000 บาท\n3.4 ชุดเครื่องมือช่าง รวม 1,500 บาท\n3.5 Smart Watch รวม 8,000 บาท",
+      "id": 1774864711990
+    },
+    {
+      "name": "รางวัล Passport (Power Bank)",
+      "amount": 50000,
+      "cat": "award",
+      "owner": "ENMM-MW-Sirichai",
+      "date": "2026-03-30",
+      "status": "pending",
+      "note": "ครบ 200 คนแรก Power Bank (250/1) ถ้าปรับเป็น 100 ท่านแรกประหยัดไป 25,000 บาท*",
+      "id": 1774864773708
+    },
+    {
+      "name": "รางวัล Passport (iPad)",
+      "amount": 18000,
+      "cat": "award",
+      "owner": "ENMM-MW-Sirichai",
+      "date": "2026-03-30",
+      "status": "pending",
+      "note": "ครบลุ้นรับ Extra Lucky draw Ipad",
+      "id": 1774864849749
+    },
+    {
+      "name": "แจกของที่ระทึก",
+      "amount": 30000,
+      "cat": "award",
+      "owner": "ENMM-MW-Sirichai",
+      "date": "2026-03-30",
+      "status": "pending",
+      "note": "กับผู้ร่วมงานทุกคน 300 ท่านแรก แก้วน้า (100/1)",
+      "id": 1774864900523
+    },
+    {
+      "name": "บูธที่ 1",
+      "amount": 5000,
+      "cat": "venue",
+      "owner": "",
+      "date": "2026-03-31",
+      "status": "pending",
+      "note": "",
+      "id": 1774919565213
+    },
+    {
+      "name": "บูธที่ 2",
+      "amount": 5000,
+      "cat": "venue",
+      "owner": "",
+      "date": "2026-03-31",
+      "status": "pending",
+      "note": "",
+      "id": 1774919619866
+    },
+    {
+      "name": "บูธที่ 3",
+      "amount": 5000,
+      "cat": "venue",
+      "owner": "",
+      "date": "2026-03-31",
+      "status": "pending",
+      "note": "",
+      "id": 1774919629487
+    },
+    {
+      "name": "บูธที่ 4",
+      "amount": 5000,
+      "cat": "venue",
+      "owner": "",
+      "date": "2026-03-31",
+      "status": "pending",
+      "note": "",
+      "id": 1774919639958
+    },
+    {
+      "name": "จัดสถานที่ ภายในงาน",
+      "amount": 20000,
+      "cat": "print",
+      "owner": "",
+      "date": "2026-03-31",
+      "status": "pending",
+      "note": "",
+      "id": 1774919736709
+    },
+    {
+      "name": "Food truck เครื่องดื่ม Punthai (200 แก้ว)",
+      "amount": 15000,
+      "cat": "food",
+      "owner": "ENMB-E-Warakorn",
+      "date": "2026-03-31",
+      "status": "pending",
+      "note": "รายการละ 60 บาท ขั้นต่ำ 100 Order",
+      "id": 1774922825062
+    },
+    {
+      "name": "Food truck อาหาร 3 รายการ",
+      "amount": 30000,
+      "cat": "food",
+      "owner": "ENMB-E-Warakorn",
+      "date": "2026-03-31",
+      "status": "pending",
+      "note": "รายการละ 60 บาท ขั้นต่ำ 100 Order",
+      "id": 1774922855765
+    },
+    {
+      "name": "ขนม/น้ำ/ของว่าง ในงาน (250*70)",
+      "amount": 18000,
+      "cat": "food",
+      "owner": "PMDV-Darin",
+      "date": "2026-03-31",
+      "status": "pending",
+      "note": "",
+      "id": 1774922978088
+    },
+    {
+      "name": "อาหาร/น้ำ ทีมงาน",
+      "amount": 5000,
+      "cat": "food",
+      "owner": "PMDV-Darin",
+      "date": "2026-03-31",
+      "status": "pending",
+      "note": "",
+      "id": 1774926322894
+    },
+    {
+      "name": "สำรอง อาหาร/เครื่องดื่ม",
+      "amount": 2000,
+      "cat": "food",
+      "owner": "PMDV-Darin",
+      "date": "2026-03-31",
+      "status": "pending",
+      "note": "",
+      "id": 1774926359547
+    },
+    {
+      "name": "เชิญวิทยากรหรือกิจกรรมเสริมการเรียนรู้",
+      "amount": 40000,
+      "cat": "misc",
+      "owner": "",
+      "date": "2026-04-20",
+      "status": "pending",
+      "note": "",
+      "id": 1776678913532
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "no": 1,
+      "name": "จำนวนการจัดกิจกรรม",
+      "detail": "1 ครั้ง/ปี จัดเป็น Open House (EN DAY) ยังไม่ได้กำหนดวัน 08.00-11.30น.",
+      "owner": "ENVP, PMDV",
+      "status": "In Progress",
+      "estBudget": 0
+    },
+    {
+      "id": 2,
+      "no": 2,
+      "name": "สถานที่",
+      "detail": "- EBC ชั้น 3 ลานโถงทางเดิน\n- ห้องประชุม EBC ชั้น 3\n- Workshop",
+      "owner": "ENVP, PMDV",
+      "status": "Pending",
+      "estBudget": 0
+    },
+    {
+      "id": 3,
+      "no": 3,
+      "name": "Passport Design",
+      "detail": "ออกแบบรูปแบบ Passport",
+      "owner": "ENIM-IS-Punthip / ENMF-I-Supakit",
+      "status": "In Progress",
+      "estBudget": 0
+    },
+    {
+      "id": 4,
+      "no": 4,
+      "name": "Awarding",
+      "detail": "จัดหาของรางวัลและลำดับรายการ",
+      "owner": "ENMM-MW-Sirichai / ENMD-M-Rattapong",
+      "status": "Pending",
+      "estBudget": 0
+    },
+    {
+      "id": 5,
+      "no": 5,
+      "name": "Budget",
+      "detail": "ดูแลงบประมาณในการจัดงาน",
+      "owner": "ENRM-RE-Thaninthon / ENMB-E-Wa",
+      "status": "In Progress",
+      "estBudget": 0
+    },
+    {
+      "id": 6,
+      "no": 6,
+      "name": "Proposal EN KM Day",
+      "detail": "ข้อเสนอต่างๆ รูปแบบต่างๆ",
+      "owner": "TOP ENMM-BA-Vasit / TOP ENMM-BA-Jithimathorn",
+      "status": "In Progress",
+      "estBudget": 0
+    },
+    {
+      "id": 7,
+      "no": 7,
+      "name": "Proposal",
+      "detail": "Topic Phishing — Painpoint EBC / EN Beat / Learning Culture / AI / Engagement",
+      "owner": "ENTS-Sorawich / ENRM-RO-Charoonroj",
+      "status": "In Progress",
+      "estBudget": 0
+    },
+    {
+      "id": 8,
+      "no": 8,
+      "name": "Up Skill Training",
+      "detail": "ดูแลข้อมูลหลังบ้านเกี่ยวกับการเข้าร่วม Training, COP",
+      "owner": "PMDV-Darin / TOP PMDV-Nopparat",
+      "status": "Pending",
+      "estBudget": 0
+    },
+    {
+      "id": 9,
+      "no": 9,
+      "name": "พิธีกรกลาง",
+      "detail": "พิธีกรเวทีกลาง",
+      "owner": "PMDV-Darin / ENRM-Natchanon",
+      "status": "In Progress",
+      "estBudget": 0
+    },
+    {
+      "id": 10,
+      "no": 10,
+      "name": "พิธีกรภาคสนาม",
+      "detail": "พิธีกรเดินสายตามบูท",
+      "owner": "ENMM-PW-Natthaphong / ENRM-RO-Chatchai / ENMF-E-Saranut",
+      "status": "Pending",
+      "estBudget": 0
+    },
+    {
+      "id": 11,
+      "no": 11,
+      "name": "ดูแลสถานที่",
+      "detail": "ควบคุมดูแลสถานที่ในการจัดงาน",
+      "owner": "ENCM-Atthasit / ENME-E-Songyot (หลัก) + Support team",
+      "status": "Pending",
+      "estBudget": 0
+    }
+  ]
+}
