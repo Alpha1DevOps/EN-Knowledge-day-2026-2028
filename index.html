@@ -464,10 +464,17 @@ tfoot td{padding:12px 16px;font-weight:700;}
   <div class="panel" id="panel-report">
     <div class="ptrow">
       <div class="pt"><h2>รายงานสรุปการเงิน</h2><p>สรุปภาพรวมงบประมาณและค่าใช้จ่ายโครงการ EN KM Festival 2026</p></div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <button class="btn" onclick="exportExcel()" style="background:var(--green-lt,#ecfdf5);color:var(--green);border-color:rgba(26,107,60,.25);font-weight:600;">
-          ⬇ Export Excel
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <button class="btn" onclick="exportExcel()" style="background:var(--green-lt,#ecfdf5);color:var(--green);border-color:rgba(5,150,105,.25);font-weight:700;">
+          📊 Export Excel
         </button>
+        <button class="btn" onclick="exportJSON()" style="background:var(--violet-lt);color:var(--violet);border-color:rgba(124,58,237,.25);font-weight:700;">
+          💾 บันทึก JSON
+        </button>
+        <label class="btn" for="jsonUploadInput" style="background:var(--amber-lt);color:var(--amber);border-color:rgba(217,119,6,.25);font-weight:700;cursor:pointer;">
+          📂 โหลด JSON
+        </label>
+        <input type="file" id="jsonUploadInput" accept=".json,application/json" style="display:none;" onchange="importJSON(this)">
         <button class="btn" onclick="window.print()">🖨 พิมพ์รายงาน</button>
       </div>
     </div>
@@ -492,9 +499,65 @@ tfoot td{padding:12px 16px;font-weight:700;}
         </table>
       </div>
     </div>
+
+    <!-- JSON Backup Card -->
+    <div class="card" style="border:1.5px solid rgba(124,58,237,.25);background:var(--violet-lt);">
+      <div class="card-h" style="background:rgba(124,58,237,.08);border-bottom-color:rgba(124,58,237,.15);">
+        <span class="card-t" style="color:var(--violet);">💾 สำรองและกู้คืนข้อมูล (JSON Backup)</span>
+      </div>
+      <div class="card-b">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <div>
+            <div style="font-size:14px;font-weight:700;color:var(--violet);margin-bottom:6px;">📤 บันทึกข้อมูล</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px;">
+              ดาวน์โหลดข้อมูลทั้งหมดเป็นไฟล์ <strong>.json</strong> เพื่อสำรองข้อมูล หรือนำไปใช้ในอุปกรณ์อื่น
+              รวมถึง รายการค่าใช้จ่าย, งบประมาณ, งานและผู้รับผิดชอบ
+            </p>
+            <button class="btn" onclick="exportJSON()" style="background:var(--grad-violet);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(124,58,237,.3);">
+              💾 บันทึก JSON
+            </button>
+          </div>
+          <div style="border-left:1.5px solid rgba(124,58,237,.2);padding-left:20px;">
+            <div style="font-size:14px;font-weight:700;color:var(--amber);margin-bottom:6px;">📥 โหลดข้อมูล</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px;">
+              เลือกไฟล์ <strong>.json</strong> ที่บันทึกไว้ก่อนหน้าเพื่อกู้คืนข้อมูลทั้งหมด
+              <span style="color:var(--rose);font-weight:700;">⚠ ข้อมูลปัจจุบันจะถูกแทนที่</span>
+            </p>
+            <label class="btn" for="jsonUploadInput2" style="background:var(--grad-amber);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(217,119,6,.3);cursor:pointer;">
+              📂 โหลด JSON
+            </label>
+            <input type="file" id="jsonUploadInput2" accept=".json,application/json" style="display:none;" onchange="importJSON(this)">
+          </div>
+        </div>
+        <div id="jsonLastSaved" style="margin-top:16px;padding:10px 14px;background:rgba(124,58,237,.06);border-radius:8px;font-size:12px;color:var(--muted);display:none;">
+          <span id="jsonLastSavedText"></span>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div><!-- /wrap -->
+
+<!-- MODAL: JSON IMPORT CONFIRM -->
+<div class="mbk" id="mJsonConfirm">
+  <div class="mbox" style="max-width:460px;">
+    <div class="mhd" style="background:linear-gradient(90deg,var(--amber-lt),var(--white));">
+      <h3 style="color:var(--amber);">⚠ ยืนยันการโหลดข้อมูล</h3>
+      <div class="mcls" onclick="closeJsonConfirm()">✕</div>
+    </div>
+    <div class="mbody">
+      <div style="background:var(--rose-lt);border:1.5px solid rgba(225,29,72,.2);border-radius:10px;padding:14px 16px;margin-bottom:18px;">
+        <div style="font-weight:700;color:var(--rose);margin-bottom:4px;">⚠ คำเตือน</div>
+        <div style="font-size:13.5px;color:var(--rose);line-height:1.6;">ข้อมูลปัจจุบันทั้งหมดจะถูก<strong>แทนที่ด้วยข้อมูลจากไฟล์</strong> ไม่สามารถยกเลิกได้</div>
+      </div>
+      <div id="jsonPreview" style="background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;font-size:13px;line-height:1.7;"></div>
+    </div>
+    <div class="mfoot">
+      <button class="btn" onclick="closeJsonConfirm()">ยกเลิก</button>
+      <button class="btn" onclick="confirmImport()" style="background:var(--grad-amber);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(217,119,6,.3);">✅ ยืนยัน โหลดข้อมูล</button>
+    </div>
+  </div>
+</div>
 
 <!-- MODAL EXPENSE -->
 <div class="mbk" id="mExp">
@@ -1468,6 +1531,143 @@ function _zipToBlob(files){
   buf.set(new Uint8Array(eocd),pos);
 
   return new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+}
+
+/* ═══════════════ JSON BACKUP / RESTORE ═══════════════ */
+function exportJSON(){
+  _initBudgetItems();
+  const now = new Date();
+  const fnDate = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}_${String(now.getHours()).padStart(2,'0')}${String(now.getMinutes()).padStart(2,'0')}`;
+
+  // Build export object with metadata
+  const exportData = {
+    _meta: {
+      app: 'EN KM Festival 2026 — Financial Management',
+      version: '1.0',
+      exportedAt: now.toISOString(),
+      exportedAtTH: now.toLocaleDateString('th-TH', {weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'}),
+      counts: {
+        expenses: S.expenses.length,
+        budgetItems: (S.budgetItems||[]).length,
+        tasks: S.tasks.length,
+      },
+      totalBudget: _budTotalBudget(),
+    },
+    totalBudget: S.totalBudget,
+    catBudgets:  S.catBudgets,
+    budgetItems: S.budgetItems || [],
+    expenses:    S.expenses,
+    tasks:       S.tasks,
+  };
+
+  const json = JSON.stringify(exportData, null, 2);
+  const blob = new Blob([json], { type: 'application/json;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = `EN_KM_Festival_2026_Backup_${fnDate}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+
+  // Update last saved label
+  const lsEl = document.getElementById('jsonLastSaved');
+  const lstEl = document.getElementById('jsonLastSavedText');
+  if (lsEl && lstEl) {
+    lstEl.textContent = `✓ บันทึกล่าสุด: ${now.toLocaleString('th-TH')} — ${S.expenses.length} รายการค่าใช้จ่าย, ${(S.budgetItems||[]).length} หมวดงบ, ${S.tasks.length} งาน`;
+    lsEl.style.display = 'block';
+  }
+  toast('💾 บันทึก JSON สำเร็จ');
+}
+
+// Pending import data (set before confirm modal opens)
+let _pendingImport = null;
+
+function importJSON(input) {
+  const file = input.files[0];
+  if (!file) return;
+  // Reset the input so same file can be re-selected
+  input.value = '';
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+
+      // Basic validation
+      if (typeof data !== 'object' || data === null) throw new Error('ไฟล์ไม่ถูกต้อง');
+
+      // Accept either full export format or raw state format
+      const isFullExport = data._meta !== undefined;
+      const state = isFullExport ? data : data;
+
+      // Must have at least one of these keys to be valid
+      if (!state.expenses && !state.tasks && !state.budgetItems) {
+        throw new Error('ไฟล์ JSON ไม่มีข้อมูลที่รู้จัก (ต้องมี expenses, tasks หรือ budgetItems)');
+      }
+
+      _pendingImport = state;
+
+      // Show preview in confirm modal
+      const meta = data._meta || {};
+      const expCount  = (state.expenses || []).length;
+      const budCount  = (state.budgetItems || []).length;
+      const taskCount = (state.tasks || []).length;
+      const totalBud  = (state.budgetItems || []).reduce((a,b) => a + Number(b.amount||0), 0);
+
+      document.getElementById('jsonPreview').innerHTML = `
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:6px 16px;align-items:baseline;">
+          <span style="color:var(--muted);font-weight:600;">ไฟล์:</span><span style="font-weight:700;">${file.name}</span>
+          ${meta.exportedAtTH ? `<span style="color:var(--muted);font-weight:600;">บันทึกเมื่อ:</span><span>${meta.exportedAtTH}</span>` : ''}
+          <span style="color:var(--muted);font-weight:600;">รายการค่าใช้จ่าย:</span><span style="font-family:'DM Mono',monospace;font-weight:700;color:var(--blue);">${expCount} รายการ</span>
+          <span style="color:var(--muted);font-weight:600;">หมวดงบประมาณ:</span><span style="font-family:'DM Mono',monospace;font-weight:700;color:var(--violet);">${budCount} หมวด</span>
+          <span style="color:var(--muted);font-weight:600;">งานและผู้รับผิดชอบ:</span><span style="font-family:'DM Mono',monospace;font-weight:700;color:var(--teal);">${taskCount} งาน</span>
+          <span style="color:var(--muted);font-weight:600;">งบประมาณรวม:</span><span style="font-family:'DM Mono',monospace;font-weight:700;color:var(--green);">${fmtB(totalBud)}</span>
+        </div>
+      `;
+      document.getElementById('mJsonConfirm').classList.add('open');
+    } catch(err) {
+      toast('❌ โหลดไฟล์ล้มเหลว: ' + err.message, false);
+      _pendingImport = null;
+    }
+  };
+  reader.onerror = () => { toast('❌ อ่านไฟล์ไม่ได้', false); };
+  reader.readAsText(file, 'utf-8');
+}
+
+function closeJsonConfirm() {
+  document.getElementById('mJsonConfirm').classList.remove('open');
+  _pendingImport = null;
+}
+
+function confirmImport() {
+  if (!_pendingImport) return;
+  const d = _pendingImport;
+
+  // Merge fields — keep existing if not present in import
+  if (d.expenses    !== undefined) S.expenses    = d.expenses;
+  if (d.tasks       !== undefined) S.tasks       = d.tasks;
+  if (d.budgetItems !== undefined) S.budgetItems = d.budgetItems;
+  if (d.catBudgets  !== undefined) S.catBudgets  = d.catBudgets;
+  if (d.totalBudget !== undefined) S.totalBudget = d.totalBudget;
+
+  save();
+  closeJsonConfirm();
+  _pendingImport = null;
+
+  // Re-render active panel + overview
+  renderOV();
+  renderRpt();
+  // Re-render other panels if cached
+  const active = document.querySelector('.panel.active');
+  if (active) {
+    const id = active.id.replace('panel-', '');
+    const REND2 = {expenses: renderExp, budget: renderBud, tasks: renderTasks, scurve: renderSC};
+    REND2[id]?.();
+  }
+
+  toast('✅ โหลดข้อมูลสำเร็จ');
 }
 
 /* ═══════════════ INIT ═══════════════ */
